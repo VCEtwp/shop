@@ -31,9 +31,7 @@ shop1.0
 
 **1.邮箱发送验证码失败**
 
-Q:需要将application.yml文件中邮箱配置信息，改为自己信息，同时需要开启自己邮箱的SMTP服务  
-
-![1562854726129](C:\Users\为天下溪\AppData\Local\Temp\1562854726129.png)
+Q:需要将application.yml文件中邮箱配置信息，改为自己信息，同时需要开启自己邮箱的SMTP服务
 
 password：生成的授权码；
 

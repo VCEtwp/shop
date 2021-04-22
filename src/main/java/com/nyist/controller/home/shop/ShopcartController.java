@@ -96,6 +96,9 @@ public class ShopcartController {
         int num = Integer.parseInt(json.getString("num"));
         String flag = json.getString("flag");
         Customer customer = (Customer) request.getSession().getAttribute("customer");
+        if (customer.getCustId()==null){
+            return "请先登录";
+        }
         //将商品添加进购物车,
         Product product = productService.selectById(pid);
         //总金额

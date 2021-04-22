@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body onload='getProvince()'>
 
 <!--顶部导航条 -->
 <div th:include="public/pagehead::common"></div>
@@ -300,18 +300,27 @@
 
             <div class="am-form-group">
                 <label for="user-phone" class="am-form-label">所在地</label>
-                <div class="am-form-content address">
-                    <select data-am-selected name="province">
-                        <option value="a">河南省</option>
-                        <option value="b">湖北省</option>
+                <div class="am-form-content address" >
+<!--                    <select data-am-selected name="province">-->
+<!--                        <option value="a">河南省</option>-->
+<!--                        <option value="b">湖北省</option>-->
+<!--                    </select>-->
+<!--                    <select data-am-selected name="city">-->
+<!--                        <option value="a">南阳市</option>-->
+<!--                        <option value="b">武汉市</option>-->
+<!--                    </select>-->
+<!--                    <select data-am-selected name="country">-->
+<!--                        <option value="a">宛城区</option>-->
+<!--                        <option value="b">洪山区</option>-->
+<!--                    </select>-->
+                    <select data-am-selected name="province" id="province" onchange="chooseProvince(this)">
+                        <option value="1">请选择省</option>
                     </select>
-                    <select data-am-selected name="city">
-                        <option value="a">南阳市</option>
-                        <option value="b">武汉市</option>
+                    <select data-am-selected name="city" id="city" onchange="chooseCity(this)">
+                        <option value="2">请选择市</option>
                     </select>
-                    <select data-am-selected name="country">
-                        <option value="a">宛城区</option>
-                        <option value="b">洪山区</option>
+                    <select data-am-selected name="country" id="area">
+                        <option value="3">请选择区</option>
                     </select>
                 </div>
             </div>
@@ -336,7 +345,7 @@
 </div>
 
 <div class="clear"></div>
-<script >
+<script>
 
     ;!function(){
         //无需再执行layui.use()方法加载模块，直接使用即可

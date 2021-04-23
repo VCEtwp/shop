@@ -210,6 +210,7 @@ public class PersonControllerl {
     @ResponseBody
     public ResultVo check(HttpServletRequest request) {
         String invoiceNo = request.getParameter("invoiceNo");
+        System.out.println(invoiceNo);
         int flag = salesService.checkByInvoiceNo(invoiceNo);
         if (flag != 0) {
             return new ResultVo(1, "确认成功", null);

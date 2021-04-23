@@ -637,11 +637,10 @@
                                                     <li class="td td-status">
                                                         <div class="item-status">
                                                             <p class="Mystatus">买家已付款</p>
-                                                            <p class="order-info"><a href="">订单详情</a></p>
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
-                                                        <div class="am-btn am-btn-danger anniu check">
+                                                        <div class="am-btn am-btn-danger anniu check" th:name="${sales.getInvoiceNo()}">
                                                             确认收货</div>
                                                     </li>
                                                 </div>
@@ -990,11 +989,11 @@
         })
 
 
-        //删除订单
+        //确认收货
         $('.check').on('click',function(){
             console.log( $(this).attr('name'))
             var  invoiceNo = $(this).attr('name');
-            layer.confirm('确定删除',function () {
+            layer.confirm('确定确认收货',function () {
                 $.ajax({
                    url:'checkOrder',
                     type:'post',

@@ -187,10 +187,19 @@
                                                 <div class="move-right">
                                                     <li class="td td-amount">
                                                         <div class="item-amount" th:if="${sales.getOrderStatus()}==1">
-                                                            交易成功
+                                                            待发货
                                                         </div>
                                                         <div class="item-amount" th:if="${sales.getOrderStatus()}==0">
                                                             未付款
+                                                        </div>
+                                                        <div class="item-amount" th:if="${sales.getOrderStatus()}==5">
+                                                            待收货
+                                                        </div>
+                                                        <div class="item-amount" th:if="${sales.getOrderStatus()}==6">
+                                                            交易成功
+                                                        </div>
+                                                        <div class="item-amount" th:if="${sales.getOrderStatus()}==2">
+                                                            退款中
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
@@ -632,7 +641,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="td td-change">
-                                                        <div class="am-btn am-btn-danger anniu">
+                                                        <div class="am-btn am-btn-danger anniu check">
                                                             确认收货</div>
                                                     </li>
                                                 </div>
@@ -966,11 +975,11 @@
                     success:function (res) {
                         console.log(res);
                         if(res.code ==0){
-                            layer.msg(res.msg,{icon:6},function () {
+                            layer.msg(res.msg,{icon:5},function () {
                                     window.location.reload();
                             })
                         }else {
-                            layer.msg(res.msg,{icon:5},function () {
+                            layer.msg(res.msg,{icon:6},function () {
                                     window.location.reload();
                             })
                         }
@@ -979,6 +988,36 @@
             })
 
         })
+
+
+        //删除订单
+        $('.check').on('click',function(){
+            console.log( $(this).attr('name'))
+            var  invoiceNo = $(this).attr('name');
+            layer.confirm('确定删除',function () {
+                $.ajax({
+                   url:'checkOrder',
+                    type:'post',
+                    data:{invoiceNo:invoiceNo},
+                    //dataType:'json',
+                    //contentType:'application/json',
+                    success:function (res) {
+                        console.log(res);
+                        if(res.code ==0){
+                            layer.msg(res.msg,{icon:5},function () {
+                                    window.location.reload();
+                            })
+                        }else {
+                            layer.msg(res.msg,{icon:6},function () {
+                                    window.location.reload();
+                            })
+                        }
+                    }
+                })
+            })
+
+        })
+
 
         //
         $('.qx').on('click',function(){

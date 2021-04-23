@@ -201,6 +201,24 @@ public class PersonControllerl {
     }
 
     /**
+     * 删除订单,
+     *
+     * @param request
+     * @return
+     */
+    @PostMapping("/checkOrder")
+    @ResponseBody
+    public ResultVo check(HttpServletRequest request) {
+        String invoiceNo = request.getParameter("invoiceNo");
+        int flag = salesService.checkByInvoiceNo(invoiceNo);
+        if (flag != 0) {
+            return new ResultVo(1, "确认成功", null);
+        } else {
+            return new ResultVo(0, "确认失败", null);
+        }
+    }
+
+    /**
      * 添加收藏夹
      *
      * @param request

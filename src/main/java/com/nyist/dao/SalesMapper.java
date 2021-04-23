@@ -52,4 +52,6 @@ public interface SalesMapper {
      List<Sales> selectAll();
 
     List<Sales> selectAll2();
+
+    int checkByInvoiceNo(String invoiceNo);
 }

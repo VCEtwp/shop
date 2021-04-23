@@ -147,7 +147,14 @@
   <update id="sendGoods" parameterType="java.lang.String">
     update sales
     set
-    flag = 2
+    order_status = 5
+    where invoice_no = #{invoiceNo,jdbcType=CHAR}
+  </update>
+
+  <update id="checkByInvoiceNo">
+    update sales
+    set
+    order_status = 6
     where invoice_no = #{invoiceNo,jdbcType=CHAR}
   </update>
 
@@ -171,8 +178,8 @@
     select
     <include refid="Base_Column_List" />
     from sales
-    where TO_DAYS( deliv_date ) - TO_DAYS( NOW()) &lt;= 0
-    and  order_status = 1 and  flag=1
+    where cust_id = #{custId,jdbcType=INTEGER}
+    and  order_status = 5 and  flag=1
   </select>
 
   <select id="findAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">

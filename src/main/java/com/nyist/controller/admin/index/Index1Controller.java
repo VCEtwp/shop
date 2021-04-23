@@ -151,6 +151,15 @@ public class Index1Controller {
     public String orderList() {
         return "admin/orderList";
     }
+
+    /**
+     * 订单发货列表
+     * @return
+     */
+    @RequestMapping("/orderListFaHuo")
+    public String orderListFaHuo() {
+        return "admin/orderListFaHuo";
+    }
     /**
      * 品牌管理
      * @return

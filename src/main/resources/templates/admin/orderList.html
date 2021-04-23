@@ -158,6 +158,8 @@
                                 return '<span style="color: #66cc50;">'+ '已退款' +'</span>'
                             else if(d.orderStatus ==4)
                                 return '<span style="color: #f3302a;">'+ '拒绝退款' +'</span>'
+                            else if(d.orderStatus ==5)
+                                return '<span style="color: #63302a;">'+ '已发货' +'</span>'
                         } },
                     {field:'totAmt', width:'10%', title: ' 总额',},
                     { field: 'right',title: '操作',toolbar: "#barDemo",fixed: 'right'}
@@ -190,11 +192,11 @@
                         success:function (res) {
                            console.log(res)
                             if (res.code == 1){
-                                layer.msg(res.msg,{icon:5},function () {
+                                layer.msg(res.msg,{icon:6},function () {
                                     window.location.reload()
                                 })
                             } else{
-                                layer.msg(res.msg,{icon:6})
+                                layer.msg(res.msg,{icon:5})
                             }
                         }
                     })

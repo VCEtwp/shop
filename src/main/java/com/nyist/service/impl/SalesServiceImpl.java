@@ -80,6 +80,12 @@ public class SalesServiceImpl implements SalesService {
     public int sendGoods(String invoiceNo) {
         return salesMapper.sendGoods(invoiceNo);
     }
+
+    @Override
+    public int checkByInvoiceNo(String invoiceNo) {
+        return salesMapper.checkByInvoiceNo(invoiceNo);
+    }
+
     /**
      * 查询未付款订单
      *
@@ -125,10 +131,10 @@ public class SalesServiceImpl implements SalesService {
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         List<Sales> salesList1 = new ArrayList<>();
         for (int i = 0; i < salesList2.size(); i++) {
-            if (!TimeUtils.subtractTime(format.format(new Date()), format.format(salesList2.get(i).getDelivDate()))) {
+//            if (!TimeUtils.subtractTime(format.format(new Date()), format.format(salesList2.get(i).getDelivDate()))) {
                 salesList2.get(i).setExtend2(format1.format(salesList2.get(i).getOrderDate()));
                 salesList1.add(salesList2.get(i));
-            }
+//            }
         }
         return salesList1;
     }

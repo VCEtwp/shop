@@ -76,6 +76,10 @@ public class SalesServiceImpl implements SalesService {
         return salesMapper.updateByInvoiceNo(invoiceNo);
     }
 
+    @Override
+    public int sendGoods(String invoiceNo) {
+        return salesMapper.sendGoods(invoiceNo);
+    }
     /**
      * 查询未付款订单
      *
@@ -311,4 +315,14 @@ public class SalesServiceImpl implements SalesService {
         return pageInfo;
     }
 
+
+    @Override
+    public PageInfo<Sales> pageList2(Sales sales, int currentPage, int pageSize) {
+        List<Sales> list = new ArrayList<>();
+        PageHelper.startPage(currentPage, pageSize);
+        //PageHelper.orderBy("orderDate asc");
+        list = salesMapper.selectAll2();
+        PageInfo<Sales> pageInfo = new PageInfo<>(list);
+        return pageInfo;
+    }
 }

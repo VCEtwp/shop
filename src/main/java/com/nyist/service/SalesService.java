@@ -63,4 +63,7 @@ public interface SalesService {
      */
     PageInfo<Sales> pageList(Sales sales, int currentPage, int pageSize);
 
+    PageInfo<Sales> pageList2(Sales sales, int currentPage, int pageSize);
+
+    int sendGoods(String invoiceNo);
 }

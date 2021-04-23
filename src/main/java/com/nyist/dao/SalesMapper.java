@@ -19,6 +19,8 @@ public interface SalesMapper {
 
     int updateByInvoiceNo(String invoiceNo);
 
+    int sendGoods(String invoiceNo);
+
     List<Sales> selectByCustId(int custId);
 
     List<Sales> selectByCustId1(int custId);
@@ -48,4 +50,6 @@ public interface SalesMapper {
     BigDecimal selectSUMBytime(String time);
 
      List<Sales> selectAll();
+
+    List<Sales> selectAll2();
 }

@@ -67,6 +67,30 @@ public class Order1Controller {
     }
 
     /**
+     * 获取已付款订单信息
+     *
+     * @param sales
+     * @param currentPage
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping("/getSaleAll2")
+    @ResponseBody
+    public LayuiPageVo getSale2(Sales sales, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
+        sales.setInvoiceNo(sales.getInvoiceNo());
+        LayuiPageVo lpv = new LayuiPageVo();
+        PageInfo<Sales> pageInfo = null;
+        pageInfo = salesService.pageList2(sales, currentPage, pageSize);
+        List<Sales> productList = pageInfo.getList();
+        lpv.setCode(1);
+        lpv.setMsg("获取数据成功");
+        lpv.setTotal(pageInfo.getTotal());
+        lpv.setData(productList);
+        return lpv;
+    }
+
+    /**
      * 订单详情表
      * @param request
      * @param model
@@ -112,5 +136,22 @@ public class Order1Controller {
         }
     }
 
+    /**
+     * 发货
+     *
+     * @param request
+     * @return
+     */
+    @PostMapping("/sendOrder")
+    @ResponseBody
+    public ResultVo sendOrder(HttpServletRequest request) {
+        String invoiceNo = request.getParameter("invoiceNo");
+        int flag = salesService.sendGoods(invoiceNo);
+        if (flag != 0) {
+            return new ResultVo(1, "发货成功", null);
+        } else {
+            return new ResultVo(0, "发货失败", null);
+        }
+    }
 
 }

@@ -54,9 +54,10 @@
 										<a href="information">
 											<img src="../images/getAvatar.do.jpg">
 										</a>
-										<em class="s-name" th:text="${session.customer.getUsername()}">(小叮当)<span class="vip1"></span></em>
+										<div class="s-prestige am-btn am-round" th:text="${session.customer.getUsername()}">(小叮当)<span class="vip1"></span></div>
+										<br>
 										<div class="s-prestige am-btn am-round">
-											</span>会员福利</div>
+											</span>普通会员</div>
 									</div>
 								</div>
 
@@ -71,11 +72,11 @@
 									<a class="i-load-more-item-shadow" href="order">全部订单</a>
 								</div>
 								<ul>
-									<li><a href="order"><i><img src="../images/pay.png"/></i><span>待付款<em class="m-num" th:text="${nopay}">1</em> </span></a></li>
-									<li><a href="order"><i><img src="../images/send.png"/></i><span>待发货<em class="m-num" th:text="${waitnum}">1</em></span></a></li>
-									<li><a href="order"><i><img src="../images/receive.png"/></i><span>待收货 <em class="m-num"  th:text="${waitsend}" >1</em></span></a></li>
-									<li><a href="order"><i><img src="../images/comment.png"/></i><span>待评价<em class="m-num">3</em></span></a></li>
-									<li><a href="change"><i><img src="../images/refund.png"/></i><span>退换货 <em class="m-num">1</em></span></a></li>
+									<li><a href="order"><i><img src="../images/pay.png"/></i><span>待付款</span></a></li>
+									<li><a href="order"><i><img src="../images/send.png"/></i><span>待发货</span></a></li>
+									<li><a href="order"><i><img src="../images/receive.png"/></i><span>待收货</span></a></li>
+									<li><a href="order"><i><img src="../images/comment.png"/></i><span>待评价</span></a></li>
+									<li><a href="change"><i><img src="../images/refund.png"/></i><span>退换货</span></a></li>
 								</ul>
 							</div>
 							<!--九宫格-->
